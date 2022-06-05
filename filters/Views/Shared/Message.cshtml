@@ -1,0 +1,27 @@
+﻿@{ Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Filters</title>
+</head>
+<body>
+    @if (Model is string)
+    {
+        @Model
+    }
+    else if (Model is IDictionary<string, string>)
+    {
+        var dict = Model as IDictionary<string, string>;
+        <table>
+            <thead><tr><th>Name</th><th>Value</th></tr></thead>
+            <tbody>
+                @foreach (var kvp in dict)
+                {
+                    <tr><td>@kvp.Key</td><td>@kvp.Value</td></tr>
+                }
+            </tbody>
+        </table>
+    }
+</body>
+</html>
